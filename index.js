@@ -60,20 +60,8 @@ const commands = {
             await vm.start();
 
             return setTimeout(async () => {
-                const instance = (await vm.get()).shift();
-                const status = STATUS = instance.metadata.status;
-                const ip = instance.metadata.networkInterfaces.shift().accessConfigs.shift().natIP || '';
-
-                const embed = new MessageEmbed()
-                    .setColor(COLOR)
-                    .setDescription('vai jogar agora e me deixa em paz\ne ve lembra de desligar')
-                    .addField('status', STATUSES[status] || status, true)
-                    .addField('ip', IP(ip), true);
-                
-                await interaction.editReply({ embeds: [embed] });
-
                 INSTANCE_INTERVAL = SET_INSTANCE_INTERVAL();
-            }, 30 * 1000);
+            }, 120 * 1000);
         },
         stop: async (interaction, description = "finalmente vai dormir ein. lembrou que tem que trabalhar amanhã é?") => {
             const status = await GET_STATUS();
